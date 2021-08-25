@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "0b227896"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat_32%C3%9732.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat_16%C3%9716.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="true">
+  <meta name="baidu-site-verification" content="code-NkpVkn30KT" />
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jinzhen-lee.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":14},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="距离上一次写博客已经过去了有半个月多的时间……换了新的笔记本费了一番力气才把全部配置挪过来，而且也不知道有没有弄好(泪) 昨天试了一下hexo是可以新建博文的，就比如我写的这篇，但是不知道能不能发布，所以就把最近的学习先一点点放上来吧。 这半个月隔离在家，学完了Java核心基础上的内容，接下来就是中和下了……路漫漫其修远兮。 今天的从8学到26面试题的内容，待会儿再做几道练习就可以了。今天学的东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇发布了的话就代表我终于换电脑搭建成功的文章">
+<meta property="og:url" content="https://jinzhen-lee.github.io/2021/08/24/20210824/">
+<meta property="og:site_name" content="机巧少女臻臻">
+<meta property="og:description" content="距离上一次写博客已经过去了有半个月多的时间……换了新的笔记本费了一番力气才把全部配置挪过来，而且也不知道有没有弄好(泪) 昨天试了一下hexo是可以新建博文的，就比如我写的这篇，但是不知道能不能发布，所以就把最近的学习先一点点放上来吧。 这半个月隔离在家，学完了Java核心基础上的内容，接下来就是中和下了……路漫漫其修远兮。 今天的从8学到26面试题的内容，待会儿再做几道练习就可以了。今天学的东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-24T14:32:38.000Z">
+<meta property="article:modified_time" content="2021-08-25T17:19:50.572Z">
+<meta property="article:author" content="jinzhen-lee">
+<meta property="article:tag" content="碎碎念">
+<meta property="article:tag" content="多态性">
+<meta property="article:tag" content="Java基础上完结">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jinzhen-lee.github.io/2021/08/24/20210824/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jinzhen-lee.github.io/2021/08/24/20210824/","path":"2021/08/24/20210824/","title":"一篇发布了的话就代表我终于换电脑搭建成功的文章"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一篇发布了的话就代表我终于换电脑搭建成功的文章 | 机巧少女臻臻</title>
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="机巧少女臻臻" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">机巧少女臻臻</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信一切都是最好的安排</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-hashtag fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-tasks fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="jinzhen-lee"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">jinzhen-lee</p>
+  <div class="site-description" itemprop="description">fighting！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jinzhen-lee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jinzhen-lee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/jinzhen-lee" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jinzhen-lee.github.io/2021/08/24/20210824/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jinzhen-lee">
+      <meta itemprop="description" content="fighting！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="机巧少女臻臻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一篇发布了的话就代表我终于换电脑搭建成功的文章
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-24 22:32:38" itemprop="dateCreated datePublished" datetime="2021-08-24T22:32:38+08:00">2021-08-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-26 01:19:50" itemprop="dateModified" datetime="2021-08-26T01:19:50+08:00">2021-08-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Java学习</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>距离上一次写博客已经过去了有半个月多的时间……换了新的笔记本费了一番力气才把全部配置挪过来，而且也不知道有没有弄好(泪)</p>
+<p>昨天试了一下hexo是可以新建博文的，就比如我写的这篇，但是不知道能不能发布，所以就把最近的学习先一点点放上来吧。</p>
+<p>这半个月隔离在家，学完了Java核心基础上的内容，接下来就是中和下了……路漫漫其修远兮。</p>
+<p>今天的从8学到26面试题的内容，待会儿再做几道练习就可以了。今天学的东西比较多，慢慢总结一下~</p>
+<span id="more"></span>
+
+<p>显示做了几个关于多态性的练习，然后讲了Object类的内容和方法，然后是Object里面比较常用的方法<code>equals()</code>和<code>toString()</code>方法的重写，这两个应该算重点。</p>
+<p>接下来比较了一下==运算和equals()，然后小小的接触了一下包装类，比较苦恼的是我看的版本是JDK8版本的，而JDK9里面做了很多关于integer包装类的改动，比如new一个integer的类就有点完全不知道怎么写了……还需要多找教程和资料😢</p>
+<p>哦对了，还有一些JUnit的学习，后面关于包装类的测试都是用JUnit进行测试的</p>
+<p>接下来放点学习的代码~</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jinzhen.study;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 面试题： == 和 equals()的区别</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 一、==的使用</span></span><br><span class="line"><span class="comment"> * ==是一个运算符</span></span><br><span class="line"><span class="comment"> * 1.使用在基本数据类型变量和引用数据类型变量中，比较两个数值相同</span></span><br><span class="line"><span class="comment"> * 2.如果比较的是基本数据类型变量，比较两个变量保存的数据是否相等（不一定类型要相同）</span></span><br><span class="line"><span class="comment"> * 		补充： ==符号使用时，必须保证符号左右两边的变量类型一致</span></span><br><span class="line"><span class="comment"> * 3.如果比较的是引用数据类型变量，比较两个变量的地址值是否相同,即两个引用是否指向同一个对象实体</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 二、equals()方法</span></span><br><span class="line"><span class="comment"> * 1.这是一个方法，而不是运算符</span></span><br><span class="line"><span class="comment"> * 2.只能适用于引用数据类型</span></span><br><span class="line"><span class="comment"> * 3.Object中定义equals():</span></span><br><span class="line"><span class="comment"> * 		public boolean equals(Object obj){</span></span><br><span class="line"><span class="comment"> * 				return (this == obj);	</span></span><br><span class="line"><span class="comment"> * 			}</span></span><br><span class="line"><span class="comment"> * 		Object中定义的equals()方法和==的作用是相同的，比较</span></span><br><span class="line"><span class="comment"> * 		两个变量的地址值是否相同,即两个引用是否指向同一个对象实体</span></span><br><span class="line"><span class="comment"> * 4.像String、Date、File、包装类等都重写了Object类中的equals()方法，</span></span><br><span class="line"><span class="comment"> * 比较的不是两个引用地址是否相同，而是比较两个对象的“实体内容”是否相同</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 5.自定义类如何去重写equals()方法</span></span><br><span class="line"><span class="comment"> * 通常情况下，自定义类如果使用equals()的话，也通常是比较两个对象的实体内容是否相同</span></span><br><span class="line"><span class="comment"> * 那么需要对Object类中的方法进行重写,比较两个对象的实体内容(即name、age)是否相同</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">double</span> d = <span class="number">10.0</span>;</span><br><span class="line">		System.out.println(i == j);<span class="comment">//true</span></span><br><span class="line">		System.out.println(i == d);<span class="comment">//true</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> c = <span class="number">10</span>;</span><br><span class="line">		System.out.println(i == c);<span class="comment">//true</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line">		<span class="keyword">char</span> c2 = <span class="number">65</span>;</span><br><span class="line">		System.out.println(c1 == c2);<span class="comment">//true</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"************************"</span>);</span><br><span class="line">		Date date1 = <span class="keyword">new</span> Date(<span class="number">2577446L</span>);</span><br><span class="line">		Date date2 = <span class="keyword">new</span> Date(<span class="number">2577446L</span>);</span><br><span class="line">		System.out.println(date1 == date2);<span class="comment">//false</span></span><br><span class="line">		System.out.println(date1.equals(date2));<span class="comment">//true</span></span><br><span class="line">		</span><br><span class="line">		Customer cust1 = <span class="keyword">new</span> Customer(<span class="string">"Tom"</span>, <span class="number">21</span>);</span><br><span class="line">		Customer cust2 = <span class="keyword">new</span> Customer(<span class="string">"Tom"</span>, <span class="number">21</span>);</span><br><span class="line">		System.out.println(cust1 == cust2);<span class="comment">//false</span></span><br><span class="line">		System.out.println(<span class="string">"*******重写后equals()方法测试*****************"</span>);</span><br><span class="line">		System.out.println(cust1.equals(cust2));<span class="comment">//true</span></span><br><span class="line">	}		</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>需要掌握equals()方法的重写，虽然在开发中不用自己手写（因为有瑕疵，直接Alt+shift+s调用即可），但是要理解原理</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//重写一个判断圆半径和颜色相等的方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> == obj){</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Circle){</span><br><span class="line">        Circle c1 = (Circle)obj;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.radius == c1.radius &amp;&amp; <span class="keyword">this</span>.getColor().equals(c1.getColor());</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">//Java调用</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == obj)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (obj == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (getClass() != obj.getClass())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    Circle other = (Circle) obj;</span><br><span class="line">    <span class="keyword">return</span> Double.doubleToLongBits(radius) == Double.doubleToLongBits(other.radius);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//toString的重写</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"the radius is:"</span> + radius;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>一些关于<code>toString()</code>内容的补充</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jinzhen.study;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Object类中oString()的使用</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 1.当我们输出一个对象的引用时，实际上就是调用当前对象的toString方法</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 2.Object类中toString的定义：</span></span><br><span class="line"><span class="comment"> * public String toString() {</span></span><br><span class="line"><span class="comment">        return getClass().getName() + "@" + Integer.toHexString(hashCode());</span></span><br><span class="line"><span class="comment">    	}</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 3.像String、Date、File、包装类都重写了Object类中的toString()方法</span></span><br><span class="line"><span class="comment"> * 使得在调用对象的toString方法时，返回“实体内容”的信息</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 4.自定义类如果重写toString方法，当调用此方法时，返回实体内容</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToStringTest</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Customer cust1 = <span class="keyword">new</span> Customer(<span class="string">"Tome"</span>,<span class="number">23</span>);</span><br><span class="line">		System.out.println(cust1.toString());<span class="comment">//jinzhen.study.Customer@7de26db8 --&gt; [重写之后]Customer[name = Tome, age = 23]</span></span><br><span class="line">		System.out.println(cust1);			<span class="comment">//jinzhen.study.Customer@7de26db8</span></span><br><span class="line">		</span><br><span class="line">		String str = <span class="keyword">new</span> String (<span class="string">"MM"</span>);</span><br><span class="line">		System.out.println(str);<span class="comment">//MM</span></span><br><span class="line">		</span><br><span class="line">	}	</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>接下来是超级方便的JUnit单元测试，可以对单个的方法进行调试，需要先在工程上右键–&gt;build path–&gt;add libraries–&gt;选择JUnit–&gt;默认为JUnit5，选择</p>
+<p>然后创建一个Java类，声明单元测试方法，需要在方法上声明注解：@Test，注意，这一步需要导包<code>org.junit.Test</code></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * java中的JUnit单元测试</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 步骤：</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 1.选中当前工程点右键--&gt;build path--&gt;add libraries--&gt;</span></span><br><span class="line"><span class="comment"> * 选择JUnit--&gt;默认为JUnit5，选择即可</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 2.创建一个Java类，进行单元测试</span></span><br><span class="line"><span class="comment"> * 		此时的Java类要求：</span></span><br><span class="line"><span class="comment"> * 		①此类是公共的</span></span><br><span class="line"><span class="comment"> * 		②这个类要提供公共的无参的构造器</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 3.再此类中声明单元测试方法</span></span><br><span class="line"><span class="comment"> * 		此时的单元测试方法：</span></span><br><span class="line"><span class="comment"> * 		①方法的权限是public，没有返回值类型(void)，没有形参</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 4.此单元测试方法上，需要声明一个注解：@Test,并在单元测试中导入org.junit.Test</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 5.声明好单元测试方法以后，就可以在方法体内测试相关的代码</span></span><br><span class="line"><span class="comment"> * 6.写完代码后，双击方法名，右键run as --&gt; JUnit Test</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 说明:</span></span><br><span class="line"><span class="comment"> * 1.如果执行结果没有任何异常，绿条</span></span><br><span class="line"><span class="comment"> * 2.如果执行结果出现异常，红条</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JUnitTest</span> </span>{</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> number = <span class="number">10</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testEquals</span><span class="params">()</span> </span>{</span><br><span class="line">		String s1 = <span class="string">"FD"</span>;</span><br><span class="line">		String s2 = <span class="string">"ds"</span>;</span><br><span class="line">		System.out.println(s1.equals(s2));</span><br><span class="line">				</span><br><span class="line">		System.out.println(number);</span><br><span class="line">		show();</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>{</span><br><span class="line">		System.out.println(<span class="string">"show()..."</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后看看能不能发布……</p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" rel="tag"># 碎碎念</a>
+              <a href="/tags/%E5%A4%9A%E6%80%81%E6%80%A7/" rel="tag"># 多态性</a>
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%AE%8C%E7%BB%93/" rel="tag"># Java基础上完结</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/24/hello-world/" rel="prev" title="使用hexo搭建博客框架+部署到GitHub过程中踩的坑">
+                  <i class="fa fa-chevron-left"></i> 使用hexo搭建博客框架+部署到GitHub过程中踩的坑
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">臻臻</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">56k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">51 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item" onclick="back2bottom()">
+      <i class='fa fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item" onclick="back2top()">
+      <i class='fa fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.8' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
