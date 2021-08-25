@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "0b227896"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat_32%C3%9732.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat_16%C3%9716.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="true">
+  <meta name="baidu-site-verification" content="code-NkpVkn30KT" />
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jinzhen-lee.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":14},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="今天是一些关于if-else的语句练习~ 然后结合那个廖大的Java课程概念做一些补充。 今天生理期，肚子痛的我恍惚……😧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="switch-case和循环结构以及部分练习">
+<meta property="og:url" content="https://jinzhen-lee.github.io/2021/07/28/20210728/">
+<meta property="og:site_name" content="机巧少女臻臻">
+<meta property="og:description" content="今天是一些关于if-else的语句练习~ 然后结合那个廖大的Java课程概念做一些补充。 今天生理期，肚子痛的我恍惚……😧">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-28T00:18:29.000Z">
+<meta property="article:modified_time" content="2021-07-29T11:07:39.840Z">
+<meta property="article:author" content="jinzhen-lee">
+<meta property="article:tag" content="例题练习">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jinzhen-lee.github.io/2021/07/28/20210728/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jinzhen-lee.github.io/2021/07/28/20210728/","path":"2021/07/28/20210728/","title":"switch-case和循环结构以及部分练习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>switch-case和循环结构以及部分练习 | 机巧少女臻臻</title>
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="机巧少女臻臻" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">机巧少女臻臻</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信一切都是最好的安排</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-hashtag fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-tasks fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-case%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">switch-case结构学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1、格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AF%B4%E6%98%8E"><span class="nav-number">1.2.</span> <span class="nav-text">2、说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81switch%E5%92%8Cif%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">3、switch和if语句的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">循环结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.1.</span> <span class="nav-text">for循环</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="jinzhen-lee"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">jinzhen-lee</p>
+  <div class="site-description" itemprop="description">fighting！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jinzhen-lee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jinzhen-lee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/jinzhen-lee" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jinzhen-lee.github.io/2021/07/28/20210728/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jinzhen-lee">
+      <meta itemprop="description" content="fighting！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="机巧少女臻臻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          switch-case和循环结构以及部分练习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-28 08:18:29" itemprop="dateCreated datePublished" datetime="2021-07-28T08:18:29+08:00">2021-07-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-29 19:07:39" itemprop="dateModified" datetime="2021-07-29T19:07:39+08:00">2021-07-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Java学习</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天是一些关于if-else的语句练习~</p>
+<p>然后结合那个廖大的Java课程概念做一些补充。</p>
+<p>今天生理期，肚子痛的我恍惚……😧</p>
+<span id="more"></span>
+
+<p>先复习一下if-else的结构，做了几道简单的例题熟悉。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="comment">//高富帅的标准</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IfElse</span></span></span><br><span class="line"><span class="class"></span>{<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line">	Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		</span><br><span class="line">	System.out.println(<span class="string">"请输入身高：（cm）"</span>);</span><br><span class="line">		<span class="keyword">int</span> height = scan.nextInt();</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"请输入资产数额：（千万）"</span>);</span><br><span class="line">		<span class="keyword">double</span> wealth = scan.nextDouble();</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"是否帅气？（true/false）"</span>);</span><br><span class="line">		<span class="keyword">boolean</span> isHandsome = scan.nextBoolean();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (height &gt;= <span class="number">180</span> &amp;&amp; wealth &gt;= <span class="number">1.0</span> &amp;&amp; isHandsome)</span><br><span class="line">	{System.out.println(<span class="string">"这个男人还可以"</span>);</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span> (height &gt;= <span class="number">180</span> || wealth &gt;= <span class="number">1.0</span> || isHandsome)</span><br><span class="line">	{System.out.println(<span class="string">"勉勉强强"</span>);</span><br><span class="line">	}<span class="keyword">else</span> {</span><br><span class="line">		System.out.println(<span class="string">"达咩！"</span>);</span><br><span class="line">	}</span><br><span class="line">    <span class="comment">//狗和人年龄的换算</span></span><br><span class="line">    Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	System.out.println(<span class="string">"请输入狗的年龄："</span>);</span><br><span class="line">	<span class="keyword">int</span> dogAge = scan.nextInt();</span><br><span class="line">	<span class="keyword">if</span> (dogAge &lt; <span class="number">0</span> )</span><br><span class="line">	{System.out.println(<span class="string">"输入有误，请重新输入！"</span>);</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span> (dogAge &lt;= <span class="number">2</span>)</span><br><span class="line">	{System.out.println(<span class="string">"相当于人类年龄："</span> + dogAge * <span class="number">10.5</span>);</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span> (dogAge &gt; <span class="number">2</span>)</span><br><span class="line">	{System.out.println(<span class="string">"相当于人类年龄："</span> + (<span class="number">21</span> + (dogAge - <span class="number">2</span>) * <span class="number">4</span>));</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如何获取一个随机数：10-99</span></span><br><span class="line">	<span class="keyword">int</span> value = (<span class="keyword">int</span>)(Math.random() * <span class="number">90</span> + <span class="number">10</span>);</span><br><span class="line">	System.out.println(value);</span><br><span class="line">	<span class="comment">//公式：[a,b] : (int)(Math.random() * (b - a + 1) + a)</span></span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>把数据输出成期望的格式：可以使用格式化输出<code>System.out.prinf()</code></p>
+<p>通过使用占位符%?，把后面的参数格式化成指定格式。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line">        <span class="keyword">double</span> d = <span class="number">3.1415926</span>;</span><br><span class="line">        System.out.printf(<span class="string">"%.2f\n"</span>,d);	<span class="comment">//显示两位小数3.14</span></span><br><span class="line">        System.out.printf(<span class="string">"%.4f\n"</span>,d);	<span class="comment">//显示四位小数3.1416，是保留过的，四舍五入</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>scan类型不能获取char，所以先获取String类型然后再转换，使用charAt</p>
+<p>小练习：随机生成一个10-99的两位数整数，用户输入两位数，根据不同的满足情况有不同的输出。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LotteryTest</span></span></span><br><span class="line"><span class="class"></span>{<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> lotteryNumber = (<span class="keyword">int</span>)Math.random() * <span class="number">90</span> + <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> lotteryNumberGe = lotteryNumber%<span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> lotteryNumberShi = lotteryNumber / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//System.out.println(lotteryNumber);</span></span><br><span class="line"></span><br><span class="line">	Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	System.out.println(<span class="string">"请输入一个两位数：（10-99）"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> guessNumber = scan.nextInt();</span><br><span class="line">	<span class="keyword">int</span> geWeiShu = guessNumber%<span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> shiWeiShu = guessNumber / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (guessNumber == lotteryNumber)</span><br><span class="line">	{System.out.println(<span class="string">"恭喜你！奖金10000美元！"</span>);</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span> (lotteryNumberGe == shiWeiShu &amp;&amp; lotteryNumberShi == geWeiShu)</span><br><span class="line">	{System.out.println(<span class="string">"恭喜你！奖金3000美元！"</span>);</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span> (lotteryNumberGe == geWeiShu || lotteryNumberShi == shiWeiShu)</span><br><span class="line">	{System.out.println(<span class="string">"恭喜你！奖金1000美元！"</span>);</span><br><span class="line">	}<span class="keyword">else</span> <span class="keyword">if</span> (lotteryNumberGe == shiWeiShu || lotteryNumberShi == geWeiShu)</span><br><span class="line">	{System.out.println(<span class="string">"恭喜你！奖金500美元！"</span>);</span><br><span class="line">	}<span class="keyword">else</span> {</span><br><span class="line">		System.out.println(<span class="string">"很遗憾，您未中奖"</span>);</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>笑死，根本猜不中，由此可见彩票真的很难中(?</p>
+<p>所以我加了System.out.println(lotteryNumber);</p>
+<p>把把赢🤣</p>
+<p>果然常胜要么是庄家要么出老千石锤🤡</p>
+<h3 id="switch-case结构学习"><a href="#switch-case结构学习" class="headerlink" title="switch-case结构学习"></a>switch-case结构学习</h3><h4 id="1、格式"><a href="#1、格式" class="headerlink" title="1、格式"></a>1、格式</h4><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式){</span><br><span class="line">	<span class="keyword">case</span> 常量<span class="number">1</span>：</span><br><span class="line">	执行语句<span class="number">1</span>；</span><br><span class="line">	<span class="comment">//break</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> 常量<span class="number">2</span>：</span><br><span class="line">	执行语句<span class="number">2</span>；</span><br><span class="line">	<span class="comment">//break</span></span><br><span class="line">	</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">defualt:</span><br><span class="line">	执行语句N</span><br><span class="line">	<span class="comment">//break;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2、说明"><a href="#2、说明" class="headerlink" title="2、说明"></a>2、说明</h4><p>①根据switch表达式的值匹配case中的常量，匹配成功进入相应case的结构中执行语句，当执行完后仍然会继续向下直到遇到break关键字，或者switch-case的结构末尾为止；</p>
+<p>②break：执行到此关键字，跳出switch-case结构；</p>
+<p>③case中的子句值必须是常量，不能是变量名或者不确定的表达式；</p>
+<p>④default子句是默认，当没有匹配的case时，执行default。</p>
+<h4 id="3、switch和if语句的对比"><a href="#3、switch和if语句的对比" class="headerlink" title="3、switch和if语句的对比"></a>3、switch和if语句的对比</h4><p>①如果判断的数值不多，而且符合byte、short、char、int、String、枚举等几种类型，建议使用switch语句，因为效率稍高；</p>
+<p>②其他情况下，对结果为boolean类型判断，使用if，if的范围更广，也就是说，使用switch-case的语句都能改写成if-else，但是反之不成立。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入2019年的日期，得到那一天是2019年的第几天</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputDays</span></span></span><br><span class="line"><span class="class"></span>{<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line"></span><br><span class="line">	Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入2019年的月份："</span>);</span><br><span class="line">	<span class="keyword">int</span> month = scan.nextInt();</span><br><span class="line">		System.out.println(<span class="string">"请输入2019年的日期："</span>);</span><br><span class="line">	<span class="keyword">int</span> date = scan.nextInt();</span><br><span class="line">	 <span class="keyword">int</span> sumDays = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">switch</span> (month)</span><br><span class="line">	{</span><br><span class="line">	<span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		sumDays += <span class="number">28</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		sumDays += date;</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"今天是2019年的第"</span> + sumDays + <span class="string">"天"</span>);</span><br><span class="line">	</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>同理还可以计算某一年的日期是第几天，但是要考虑闰年的情况。</p>
+<p>判断一年是否是闰年的标准： 1）可以被4整除，但不可被100整除 或 2）可以被400整除。</p>
+<p>闰年和非闰年的不同点就在二月，所以要把程序改成从键盘输入年月日来判断这一天是当年的第几天的话，只需要更改一下case 为 2的情况即可：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">从键盘分别输入年、月、日，判断这一天是当年的第几天</span></span><br><span class="line"><span class="comment">注：判断一年是否是闰年的标准：</span></span><br><span class="line"><span class="comment">1）可以被4整除，但不可被100整除</span></span><br><span class="line"><span class="comment">或</span></span><br><span class="line"><span class="comment">2）可以被400整除</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalcDays</span></span></span><br><span class="line"><span class="class"></span>{<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span></span><br><span class="line"><span class="function">	</span>{</span><br><span class="line">		Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入所计算年的年份："</span>);</span><br><span class="line">	<span class="keyword">int</span> year = scan.nextInt();</span><br><span class="line">		System.out.println(<span class="string">"请输入所计算年的月份："</span>);</span><br><span class="line">	<span class="keyword">int</span> month = scan.nextInt();</span><br><span class="line">		System.out.println(<span class="string">"请输入所计算年的日期："</span>);</span><br><span class="line">	<span class="keyword">int</span> date = scan.nextInt();</span><br><span class="line">	<span class="comment">//定义总天数</span></span><br><span class="line">	<span class="keyword">int</span> sumDays = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">switch</span> (month)</span><br><span class="line">	{</span><br><span class="line">	<span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">		sumDays += <span class="number">30</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		<span class="comment">//sumDays += 28;（更改的地方）</span></span><br><span class="line">		<span class="comment">//判断是否是闰年</span></span><br><span class="line">		<span class="keyword">if</span> ((year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span> ) || year % <span class="number">400</span> == <span class="number">0</span>)</span><br><span class="line">		{sumDays += <span class="number">29</span>;</span><br><span class="line">		}<span class="keyword">else</span>{</span><br><span class="line">			sumDays += <span class="number">28</span>;</span><br><span class="line">		}</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		sumDays += <span class="number">31</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		sumDays += date;</span><br><span class="line"></span><br><span class="line">	System.out.println(year + <span class="string">"年"</span> + month + <span class="string">"月"</span> + date + <span class="string">"日"</span> + <span class="string">"是当年的第"</span> + sumDays + <span class="string">"天"</span>);</span><br><span class="line">	</span><br><span class="line">	}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>还有很多关于switch-case和if-else的练习<del>需要下来多练练敲代码，熟悉一下功能和逻辑思考方式</del></p>
+<p>然后接下来是学习循环结构了，循环也放到这一篇好了（继续改标题🤣</p>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>在某些条件的情况下，反复执行特定代码的功能。</p>
+<p>循环语句的四要素：<strong>初始化部分、循环条件部分(必须是boolean类型)、循环体部分和迭代部分。</strong></p>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><p>结构：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(①;②;④){</span><br><span class="line">	③</span><br><span class="line">}</span><br><span class="line"><span class="comment">//输入5遍hello，world！</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ForTest</span> </span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span></span><br><span class="line"><span class="function">	</span>{</span><br><span class="line">		<span class="keyword">for</span>(</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i++)<span class="comment">//这个地方不要加分号！！！！！！！！！</span></span><br><span class="line">			{</span><br><span class="line">			System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">			}</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="comment">//定义在此for循环内的变量出了循环结构后无效</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>简单的累计遍历小练习~</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForTest</span></span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">100</span>;i++){</span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>){</span><br><span class="line">                System.out.println(i);</span><br><span class="line">                sum += i;</span><br><span class="line">                count++;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">"一共有"</span> + count + <span class="string">"个偶数"</span>);</span><br><span class="line">            System.out.println(<span class="string">"总和为："</span> + sum);</span><br><span class="line">        <span class="comment">//要从循环体中出来，不然每循环一次都要重复的写一遍，但是只在最后的结果需要显示</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>for的语句练习：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">编写程序从1循环到150，并在每行打印一个值，另外在每个3的倍数行</span></span><br><span class="line"><span class="comment">上打印出“foo”,在每个5的倍数行上打印“biz”,在每个7的倍数行上打印</span></span><br><span class="line"><span class="comment">输出“baz”</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForTest2</span></span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= <span class="number">150</span>;i++){</span><br><span class="line">            System.out.print(i + <span class="string">"  "</span>);</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span>){</span><br><span class="line">                System.out.print(<span class="string">"foo"</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">5</span> == <span class="number">0</span>){</span><br><span class="line">                System.out.print(<span class="string">"biz"</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">7</span> == <span class="number">0</span>){</span><br><span class="line">                System.out.print(<span class="string">"baz"</span>);</span><br><span class="line">            }</span><br><span class="line">            System.out.println();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>今天的学习~就到这里，明天把练习再多做一做！</p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BE%8B%E9%A2%98%E7%BB%83%E4%B9%A0/" rel="tag"># 例题练习</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/27/20210727-learning/" rel="prev" title="博客美化第二弹！">
+                  <i class="fa fa-chevron-left"></i> 博客美化第二弹！
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/30/20210730/" rel="next" title="for循环、while循环和do-while循环">
+                  for循环、while循环和do-while循环 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">臻臻</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">52k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">47 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item" onclick="back2bottom()">
+      <i class='fa fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item" onclick="back2top()">
+      <i class='fa fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.8' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>

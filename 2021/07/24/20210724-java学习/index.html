@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "0b227896"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat_32%C3%9732.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat_16%C3%9716.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="true">
+  <meta name="baidu-site-verification" content="code-NkpVkn30KT" />
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jinzhen-lee.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":14},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="事实证明，基础打不好，后期的学习都是空中楼阁……很多概念性的东西看不懂，代码读不出内容，无法理解的自然也写不出来，所以今天补充基本概念的学习。 昨天学习了JVM和JMM的一些内容，JVM就是Java在运行时候的内存空间，分为栈（Stack）、堆（Heap）和方法区，一段代码在执行过程中引用的方法在栈中形成一个帧栈，一个线程的执行就是从入栈到出栈的过程，帧栈属于虚拟机栈，分为局部变量、操作栈、动态连">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Java中基础知识的补充学习">
+<meta property="og:url" content="https://jinzhen-lee.github.io/2021/07/24/20210724-java%E5%AD%A6%E4%B9%A0/">
+<meta property="og:site_name" content="机巧少女臻臻">
+<meta property="og:description" content="事实证明，基础打不好，后期的学习都是空中楼阁……很多概念性的东西看不懂，代码读不出内容，无法理解的自然也写不出来，所以今天补充基本概念的学习。 昨天学习了JVM和JMM的一些内容，JVM就是Java在运行时候的内存空间，分为栈（Stack）、堆（Heap）和方法区，一段代码在执行过程中引用的方法在栈中形成一个帧栈，一个线程的执行就是从入栈到出栈的过程，帧栈属于虚拟机栈，分为局部变量、操作栈、动态连">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-24T06:13:04.000Z">
+<meta property="article:modified_time" content="2021-07-27T07:18:19.473Z">
+<meta property="article:author" content="jinzhen-lee">
+<meta property="article:tag" content="Java基础">
+<meta property="article:tag" content="关键字含义">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jinzhen-lee.github.io/2021/07/24/20210724-java%E5%AD%A6%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jinzhen-lee.github.io/2021/07/24/20210724-java%E5%AD%A6%E4%B9%A0/","path":"2021/07/24/20210724-java学习/","title":"关于Java中基础知识的补充学习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于Java中基础知识的补充学习 | 机巧少女臻臻</title>
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="机巧少女臻臻" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">机巧少女臻臻</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信一切都是最好的安排</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-hashtag fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-tasks fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="jinzhen-lee"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">jinzhen-lee</p>
+  <div class="site-description" itemprop="description">fighting！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jinzhen-lee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jinzhen-lee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/jinzhen-lee" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jinzhen-lee.github.io/2021/07/24/20210724-java%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jinzhen-lee">
+      <meta itemprop="description" content="fighting！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="机巧少女臻臻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于Java中基础知识的补充学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-24 14:13:04" itemprop="dateCreated datePublished" datetime="2021-07-24T14:13:04+08:00">2021-07-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-27 15:18:19" itemprop="dateModified" datetime="2021-07-27T15:18:19+08:00">2021-07-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Java学习</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>事实证明，基础打不好，后期的学习都是空中楼阁……很多概念性的东西看不懂，代码读不出内容，无法理解的自然也写不出来，所以今天补充基本概念的学习。</p>
+<p>昨天学习了JVM和JMM的一些内容，JVM就是Java在运行时候的内存空间，分为栈（Stack）、堆（Heap）和方法区，一段代码在执行过程中引用的方法在栈中形成一个帧栈，一个线程的执行就是从入栈到出栈的过程，帧栈属于虚拟机栈，分为局部变量、操作栈、动态连接和方法返回地址四个部分。</p>
+<span id="more"></span>
+
+<p>对于一条线程的具体执行方法，看了很多文件但是还是不太理解，故而先放下，不死抠了，等多了解一些再回头看也许就看的懂了。</p>
+<p>Java之所以可以在不同的操作系统执行同一段代码，是因为JVM这个转换器，将Java的源码转换为了当前平台可运行的Java字节码，并且即使Java进行了更新，低版本的代码依旧可以在高版本上运行，高低版本是兼容的。也就是说不同版本的Java源码相同，不一样的是JVM，因为JVM是转换源码的工具。</p>
+<p>在一段代码中，先确定一个类→方法→[执行代码→定义变量]</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>{</span><br><span class="line">    	<span class="function"><span class="keyword">public</span> staic <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{</span><br><span class="line">            	System.out.println(<span class="string">"Hello,world!"</span>);</span><br><span class="line">        }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在上面那段代码中，class是类，Hello是类名，首字母大写，尽量有含义，可以和数字、_、$一起使用，不能含有空格。</p>
+<p>public意思是公开，这是一段对所有用户开放的，里面的内容可以被其他人调用。</p>
+<p>static是成员变量，或者叫静态变量，目前粗浅的理解一点，就是static是一个可以全局使用的变量，Java作为一个面向对象的语言，本来不应该存在这种在全局都通用的变量的，但是static可以实现，如何实现呢？大概的方法就是在一个Demo1中定义一个static变量i，并且使用方法getNumber()返回i，在第二个类Demo2中，想要得到Demo1中静态的i，直接类名引用就好了：int i = Demo1.i;</p>
+<p>具体过程如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先创建方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>{</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>{}</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span></span>{</span><br><span class="line">				<span class="keyword">return</span> i;<span class="comment">//返回的是全局变量的i</span></span><br><span class="line">		</span><br><span class="line">		}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后再新建一个class</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo1</span> </span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span></span><br><span class="line"><span class="function">	</span>{</span><br><span class="line">		<span class="keyword">int</span> i = Hello.i;</span><br><span class="line">        <span class="comment">//想要得到Hello中的静态变量i，直接类名引用即可</span></span><br><span class="line">		System.out.println(i);</span><br><span class="line">        <span class="comment">//输出结果会根据被引用的变量更改而更改</span></span><br><span class="line">		<span class="keyword">int</span> ii = Hello.getNumber();</span><br><span class="line">        <span class="comment">//还可以直接根据类名调用方法</span></span><br><span class="line">		System.out.println(ii);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="comment">//以上两个输出的结果都是5</span></span><br><span class="line"><span class="comment">//当Hello中的i被更改时，后面的输出结果也随之改变</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>说完了static，接下来是void。</p>
+<p>void就是空，Java作为面向对象，最终一定要有一个返回值，而在第一句加上<code>public static void mai(String [] args){}</code>就代表“空”，即“什么都不返回”，如果在一个方法中不需要返回值，就可以使用void关键字。</p>
+<p>关于void还有一些Void的知识，但是封装类型还没有接触，所以暂时先了解这么多。</p>
+<p>main()表示方法，Java程序的固定入口方法是<code>public static void main(String [] args){}</code>，都是从main执行的。</p>
+<p>然后进入方法里面以后，就会产生变量。</p>
+<p>变量在使用前必须声明，格式为：数据类型 变量名（给变量赋值）；</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a,b,c;		<span class="comment">//声明三个int型整数：a、b、c，多个同类型变量用逗号隔开</span></span><br><span class="line"><span class="keyword">int</span> d = <span class="number">3</span>,e = <span class="number">4</span>, f = <span class="number">5</span>;		<span class="comment">//声明三个int型整数并赋值</span></span><br><span class="line"><span class="keyword">int</span> g;			<span class="comment">//不写初始值，默认为0</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>变量有两种类型，基本数据变量和引用变量。</p>
+<p>基本数据类型有八种，可分为四大类：整型（byte、int，short、long）、浮点型（float、double）、布尔型（Boolean）和字符类型（char）。不同类型占用的字节数不一样：</p>
+<p>byte：         □</p>
+<p>short：       □□</p>
+<p>char：         □□</p>
+<p>int：            □□□□</p>
+<p>float：        □□□□</p>
+<p>long：        □□□□□□□□</p>
+<p>double：    □□□□□□□□</p>
+<p>一般变量在被定义的作用域内才会有效，一旦出了作用域就不能使用（static定义的变量需要引用类名），变量的作用域尽量定义的小，且不要重复变量名。</p>
+<p>关于对象、类、方法、变量的一些学习和理解就到这里，明天继续！</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">推荐文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2021\07\16\20210716learning\" rel="bookmark">20210716的Java学习内容</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2021\07\21\20210721-learning\" rel="bookmark">20210721的学习日常</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2021\07\26\20210726-learning\" rel="bookmark">流程控制结构if...else的学习和用Scanner从键盘获取不同数据类型的方法</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java%E5%9F%BA%E7%A1%80/" rel="tag"># Java基础</a>
+              <a href="/tags/%E5%85%B3%E9%94%AE%E5%AD%97%E5%90%AB%E4%B9%89/" rel="tag"># 关键字含义</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/23/20210723/" rel="prev" title="关于JVM和内存回收的一点学习">
+                  <i class="fa fa-chevron-left"></i> 关于JVM和内存回收的一点学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/25/JDK%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E5%92%8C%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9%E7%9A%84%E5%AD%A6%E4%B9%A0/" rel="next" title="JDK的环境变量配置和其他内容的学习">
+                  JDK的环境变量配置和其他内容的学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">臻臻</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">52k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">47 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item" onclick="back2bottom()">
+      <i class='fa fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item" onclick="back2top()">
+      <i class='fa fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.8' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
