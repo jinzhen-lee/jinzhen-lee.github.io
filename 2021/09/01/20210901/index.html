@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "0b227896"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat_32%C3%9732.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat_16%C3%9716.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="true">
+  <meta name="baidu-site-verification" content="code-NkpVkn30KT" />
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CLobster+Two:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jinzhen-lee.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":14},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="最近学的东西太多啦，好久都没有更新博客了~但是每天都有好好学习！学的越多越混乱……要抽个时间好好复习全部的内容，尤其是static和abstract(虽然这俩好像没啥关系😅) 以及接口和实例化对象的方法，内部类实现的方法什么的，好多，好容易混淆(555) 把这几天所有的学习内容总结整理一下……前方大量代码来袭！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="abstract关键字和接口内部类以及异常处理">
+<meta property="og:url" content="https://jinzhen-lee.github.io/2021/09/01/20210901/">
+<meta property="og:site_name" content="机巧少女臻臻">
+<meta property="og:description" content="最近学的东西太多啦，好久都没有更新博客了~但是每天都有好好学习！学的越多越混乱……要抽个时间好好复习全部的内容，尤其是static和abstract(虽然这俩好像没啥关系😅) 以及接口和实例化对象的方法，内部类实现的方法什么的，好多，好容易混淆(555) 把这几天所有的学习内容总结整理一下……前方大量代码来袭！！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-01T14:39:51.000Z">
+<meta property="article:modified_time" content="2021-09-02T15:11:59.842Z">
+<meta property="article:author" content="jinzhen-lee">
+<meta property="article:tag" content="abstract关键字">
+<meta property="article:tag" content="接口">
+<meta property="article:tag" content="内部类">
+<meta property="article:tag" content="Exception">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jinzhen-lee.github.io/2021/09/01/20210901/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jinzhen-lee.github.io/2021/09/01/20210901/","path":"2021/09/01/20210901/","title":"abstract关键字和接口内部类以及异常处理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>abstract关键字和接口内部类以及异常处理 | 机巧少女臻臻</title>
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="机巧少女臻臻" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">机巧少女臻臻</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">相信一切都是最好的安排</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-hashtag fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-tasks fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="jinzhen-lee"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">jinzhen-lee</p>
+  <div class="site-description" itemprop="description">fighting！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jinzhen-lee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jinzhen-lee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/jinzhen-lee" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jinzhen-lee.github.io/2021/09/01/20210901/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jinzhen-lee">
+      <meta itemprop="description" content="fighting！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="机巧少女臻臻">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          abstract关键字和接口内部类以及异常处理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-01 22:39:51" itemprop="dateCreated datePublished" datetime="2021-09-01T22:39:51+08:00">2021-09-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-02 23:11:59" itemprop="dateModified" datetime="2021-09-02T23:11:59+08:00">2021-09-02</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Java学习</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近学的东西太多啦，好久都没有更新博客了~但是每天都有好好学习！学的越多越混乱……要抽个时间好好复习全部的内容，尤其是static和abstract(虽然这俩好像没啥关系😅)</p>
+<p>以及接口和实例化对象的方法，内部类实现的方法什么的，好多，好容易混淆(555)</p>
+<p>把这几天所有的学习内容总结整理一下……前方大量代码来袭！！</p>
+<span id="more"></span>
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * abstract关键字的使用</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 1. abstract可以用来修饰的结构：类、方法</span></span><br><span class="line"><span class="comment"> * 2. abstract修饰类、抽象类</span></span><br><span class="line"><span class="comment"> * 		&gt; 此类不能实例化</span></span><br><span class="line"><span class="comment"> * 		&gt; 抽象类中一定有构造器，便于子类实例化时调用（涉及，子类对象实例化过程）</span></span><br><span class="line"><span class="comment"> * 		&gt; 开发中，都会提供抽象类的子类，让子类对象实例化</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 3. abstract修饰方法，抽象方法</span></span><br><span class="line"><span class="comment"> * 		&gt;只有方法的声明没有方法体</span></span><br><span class="line"><span class="comment"> * 		&gt;包含抽象方法的类，一定是一个抽象类；反之，抽象类中可以没有抽象方法</span></span><br><span class="line"><span class="comment"> * 		&gt;若子类重写了父类中的所有抽象方法后，此子类方可实例化(直接父类和间接父类都要写)</span></span><br><span class="line"><span class="comment"> * 		&gt;若子类没有重写父类中的所有抽象方法，则子类也是一个抽象类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * abstract使用的注意点</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *	1. 不能用来修饰构造器、属性等结构</span></span><br><span class="line"><span class="comment"> *	2. abstract不能用来修饰私有方法、静态方法、final方法</span></span><br><span class="line"><span class="comment"> * 	</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractTest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Student s1 = <span class="keyword">new</span> Student();</span><br><span class="line">		s1.eat();</span><br><span class="line">	}	</span><br><span class="line">}</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>{</span><br><span class="line">	String name;</span><br><span class="line">	<span class="keyword">int</span> age;	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>{		</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>{</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	}	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>{</span><br><span class="line">		System.out.println(<span class="string">"people need eat."</span>);</span><br><span class="line">	}	</span><br><span class="line">	<span class="comment">//abstract public void eat();</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">walk</span><span class="params">(<span class="keyword">int</span> distance)</span> </span>{</span><br><span class="line">		System.out.println(<span class="string">"people can walk "</span> + distance + <span class="string">"km perday."</span>);</span><br><span class="line">		<span class="keyword">return</span> distance;</span><br><span class="line">	}	</span><br><span class="line">}</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>{	</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后是接口，接口和抽象类有一点相同的地方，所以放在一起看</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jizhen.study.java;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 接口的使用</span></span><br><span class="line"><span class="comment"> * 1. 接口使用interface来定义</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 2. 在Java中，接口和类是并列的结构</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 3. 定义接口中的成员</span></span><br><span class="line"><span class="comment"> * 		3.1 JDK7及以前：在接口中只能定义常量和抽象方法</span></span><br><span class="line"><span class="comment"> * 			&gt;全局常量：public, static final的,书写时可以省略不写</span></span><br><span class="line"><span class="comment"> * 			&gt;抽象方法：public ,abstract的</span></span><br><span class="line"><span class="comment"> * 			</span></span><br><span class="line"><span class="comment"> * 		3.2 JDK8：除了定义常量和抽象方法以外，还可以定义静态方法和默认方法</span></span><br><span class="line"><span class="comment"> * 		3.3 JDK9:可以定义私有方法</span></span><br><span class="line"><span class="comment"> * 			</span></span><br><span class="line"><span class="comment"> * 4. 接口中不能定义构造器！意味着接口不能实例化</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 5. Java开发中，接口通过让类去实现（implements）的方式来使用，</span></span><br><span class="line"><span class="comment"> * 		如果实现类覆盖了接口的所有抽象方法，则此实现类就可以实例化，</span></span><br><span class="line"><span class="comment"> * 		如果实现类没有覆盖接口中所有的抽象方法，则仍为一个抽象类</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 6. java类可以实现多个接口 --&gt;弥补了Java类单继承性的局限性</span></span><br><span class="line"><span class="comment"> * 		格式：class A extends B implements C,D,E</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 7. 接口与接口之间可以继承，可以多继承</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 8. 接口的具体使用，体现多态性</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 9. 接口，实际上可以看作是一种规范</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 10.全局常量的调用：直接使用“接口.属性”的方法进行调用</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 抽象类与接口有哪些异同？</span></span><br><span class="line"><span class="comment"> * 相同：不能实例化，都可以被继承</span></span><br><span class="line"><span class="comment"> * 不同：</span></span><br><span class="line"><span class="comment"> * 抽象类：有构造器，单继承</span></span><br><span class="line"><span class="comment"> * 接口：不能声明构造器，多继承</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterfaceTest</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		</span><br><span class="line">		Plane plane = <span class="keyword">new</span> Plane();</span><br><span class="line">		plane.fly();</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Flyable</span></span>{</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_SPEED = <span class="number">7900</span>;</span><br><span class="line">	<span class="comment">//省略了public static final </span></span><br><span class="line">	<span class="keyword">int</span> MIN_SPEED = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">//省略了public abstract</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plane</span> <span class="keyword">implements</span> <span class="title">Flyable</span>,<span class="title">CC</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"><span class="comment">//*************************************************</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AA</span></span>{</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">method</span> <span class="params">()</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">BB</span></span>{</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">CC</span> <span class="keyword">extends</span> <span class="title">AA</span>,<span class="title">BB</span></span>{</span><br><span class="line">	</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在实现接口进行调用方法的时候，要注意是否静态，静态方法不能被继承类所调用，还有一些其他方法调用的准则：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubClassTest</span> <span class="keyword">extends</span> <span class="title">SuperClass</span> <span class="keyword">implements</span> <span class="title">CompareA</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		SubClass s = <span class="keyword">new</span> SubClass();</span><br><span class="line">		s.method2();</span><br><span class="line">		<span class="comment">//1. 接口中定义的静态方法，只能通过接口来调用，不能被继承类所调用，只能自己用</span></span><br><span class="line">		<span class="comment">//s.method1();</span></span><br><span class="line">		CompareA.method1();</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 通过实现类的对象，可以调用接口中的默认方法</span></span><br><span class="line">		<span class="comment">//如果实现类重写了接口中的默认方法，调用时，仍然调用的是重写的方法</span></span><br><span class="line">		s.method2();</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//3. 如果实现类（子类）实现的接口中（或继承的父类）声明了同名同参数的方法，</span></span><br><span class="line">		<span class="comment">//	那么在子类没有重写此方法的情况下，默认调用的是父类中同名参数的方法--&gt;类优先原则 </span></span><br><span class="line">		s.method3();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//4. 如果实现类实现了多个接口，而这多个接口中定义了同名同参数的默认方法，</span></span><br><span class="line">		<span class="comment">//那么在实现类没有重写此方法的前提下，报错--&gt;接口冲突</span></span><br><span class="line">		<span class="comment">//这就需要我们必须在实现类中重写此方法,才能调用</span></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">		<span class="comment">//5. 如何在子类（或实现类）中调用父类（接口）中被重写的方法</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myMethod</span><span class="params">()</span> </span>{</span><br><span class="line">			<span class="keyword">super</span>.method3();</span><br><span class="line">			CompareA.<span class="keyword">super</span>.method3();</span><br><span class="line">		}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">SuperClass</span> <span class="keyword">implements</span> <span class="title">CompareA</span></span>{</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>{</span><br><span class="line">		System.out.println(<span class="string">"SubClass,Shanghai~"</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>总结：</p>
+<blockquote>
+<p>接口中的静态方法不能被实现类调用；</p>
+<p>实现类中如果重写了接口的方法，调用时是被重写的方法；</p>
+<p>实现类（子类）如果在接口和父类中声明了同名方法，在没有重写的情况下，先调用父类的方法；</p>
+<p>调用多个接口时，实现类没有重写不同接口中的重名方法时，会抛出接口冲突错误；</p>
+<p>子类中调用父类方法：”super.方法名”；实现类中调用接口方法：”接口名.super.方法名”</p>
+</blockquote>
+<p>在实现接口的时候，要创建对象，有以下四种不同的创建情况：匿名实现类匿名对象、匿名实现类非匿名对象、非匿名实现类匿名对象、非匿名实现类非匿名对象。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jizhen.study.java;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 接口的使用</span></span><br><span class="line"><span class="comment"> * 1. 接口使用上满足多态性</span></span><br><span class="line"><span class="comment"> * 2. 接口，实际上就是定义了一种规范</span></span><br><span class="line"><span class="comment"> * 3. 开发中，体会面向接口编程 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">USBTest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Computer cp = <span class="keyword">new</span> Computer();</span><br><span class="line">		<span class="comment">//1. 创建了接口的非匿名实现类的非匿名对象</span></span><br><span class="line">		Flash flash = <span class="keyword">new</span> Flash();</span><br><span class="line">		cp.transferdata(flash);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 创建了接口的非匿名实现类的匿名对象</span></span><br><span class="line">		cp.transferdata(<span class="keyword">new</span> Printer());</span><br><span class="line">        </span><br><span class="line">		<span class="comment">//3. 创建了接口的匿名实现类的非匿名对象</span></span><br><span class="line">		USB phone = <span class="keyword">new</span> USB() {</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>{</span><br><span class="line">				System.out.println(<span class="string">"phone starts working "</span>);</span><br><span class="line">				</span><br><span class="line">			}</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>{</span><br><span class="line">				System.out.println(<span class="string">"phone stops working "</span>);</span><br><span class="line">				</span><br><span class="line">			}};</span><br><span class="line">		cp.transferdata(phone);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//4. 创建了接口的匿名实现类的匿名对象</span></span><br><span class="line">		cp.transferdata(<span class="keyword">new</span> USB() {</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>{</span><br><span class="line">				System.out.println(<span class="string">"mp3 starts working "</span>);</span><br><span class="line">			}</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>{</span><br><span class="line">				System.out.println(<span class="string">"mp3 stops working "</span>);</span><br><span class="line">				</span><br><span class="line">			}}</span><br><span class="line">		);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Computer</span></span>{</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transferdata</span><span class="params">(USB usb)</span> </span>{</span><br><span class="line">		usb.start();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"transfering..."</span>);</span><br><span class="line">		</span><br><span class="line">		usb.stop();</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义了规范</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">USB</span> </span>{</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">start</span> <span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Flash</span> <span class="keyword">implements</span> <span class="title">USB</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>{</span><br><span class="line">		System.out.println(<span class="string">"USB starts working "</span>);</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>{</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"USB stops working "</span>);</span><br><span class="line">		</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Printer</span> <span class="keyword">implements</span> <span class="title">USB</span></span>{</span><br><span class="line">		</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>{</span><br><span class="line">			System.out.println(<span class="string">"printer starts working "</span>);</span><br><span class="line">			</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>{</span><br><span class="line">			</span><br><span class="line">			System.out.println(<span class="string">"printer stops working "</span>);</span><br><span class="line">			</span><br><span class="line">		}</span><br><span class="line">	</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>拖了好久终于把这段的内容写好了……今天学了抛异常的方法，但是实际上抛出异常的话，还是需要了解一下异常的名字，真的好长，除了名字还要基础为什么会有这个异常，以及解决方法，谁说程序员就什么都不用背的！这种需要背诵的纯理论内容简直不要太多……</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 一、异常体系结构</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * java.lang.Throwable</span></span><br><span class="line"><span class="comment"> * 			|----java.lang.Error:一般不编写针对性的代码进行处理</span></span><br><span class="line"><span class="comment"> *    		|----java.lang.Exception:可以进行异常的处理</span></span><br><span class="line"><span class="comment"> *    			编译时异常(checked)</span></span><br><span class="line"><span class="comment"> *    				&gt;IOException</span></span><br><span class="line"><span class="comment"> *    					&gt;FileNotFoundException</span></span><br><span class="line"><span class="comment"> *    				&gt;ClassNotFoundException</span></span><br><span class="line"><span class="comment"> *    </span></span><br><span class="line"><span class="comment"> *    			运行时异常(unchecked)</span></span><br><span class="line"><span class="comment"> *    				&gt;NullPointerException</span></span><br><span class="line"><span class="comment"> *    				&gt;ArrayIndexOutOfBoundException</span></span><br><span class="line"><span class="comment"> *    				&gt;ClassCastException</span></span><br><span class="line"><span class="comment"> *    				&gt;NumberFormatException</span></span><br><span class="line"><span class="comment"> *    				&gt;InputMismatchException</span></span><br><span class="line"><span class="comment"> *    				&gt;ArithmeticException</span></span><br><span class="line"><span class="comment"> *    </span></span><br><span class="line"><span class="comment"> *    面试题：常见的异常有哪些？举例说明</span></span><br><span class="line"><span class="comment"> * 		需要能举例和排除这些异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionTest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="comment">//**********************运行时异常*************************</span></span><br><span class="line">		<span class="comment">//&gt;NullPointerException</span></span><br><span class="line">		<span class="meta">@Test</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>{</span><br><span class="line">			<span class="keyword">int</span> [] arr = <span class="keyword">null</span>;</span><br><span class="line">			System.out.println(arr[<span class="number">1</span>]);</span><br><span class="line">			</span><br><span class="line">		String str = <span class="string">"abc"</span>;</span><br><span class="line">		str = <span class="keyword">null</span>;</span><br><span class="line">		System.out.println(str.charAt(<span class="number">0</span>));</span><br><span class="line">	}</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//&gt;ArrayIndexOutOfBoundException</span></span><br><span class="line">		<span class="meta">@Test</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>{</span><br><span class="line">			<span class="keyword">int</span> []arr = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">5</span>];</span><br><span class="line">			System.out.println(arr[<span class="number">10</span>]);</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//&gt;ClassCastException</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		public void test3() {</span></span><br><span class="line"><span class="comment">//			Object obj = new Date();</span></span><br><span class="line"><span class="comment">//			String str = String(obj);</span></span><br><span class="line"><span class="comment">//		}</span></span><br><span class="line">		<span class="comment">//不知为啥编译都不能通过……</span></span><br><span class="line">	</span><br><span class="line">		<span class="comment">//&gt;NumberFormatException</span></span><br><span class="line">		<span class="meta">@Test</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>{</span><br><span class="line">			String str = <span class="string">"ab123"</span>;</span><br><span class="line">			<span class="keyword">int</span> num = Integer.parseInt(str);</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//&gt;InputMismatchException</span></span><br><span class="line">		<span class="meta">@Test</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span> </span>{</span><br><span class="line">			Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">			<span class="keyword">int</span> score = scanner.nextInt();</span><br><span class="line">			<span class="comment">//此时输入String类型的内容会报这个错误</span></span><br><span class="line">			System.out.println(score);</span><br><span class="line">			scanner.close();</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//&gt;ArithmeticException 算数异常</span></span><br><span class="line">		<span class="meta">@Test</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test6</span><span class="params">()</span> </span>{</span><br><span class="line">			<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">			<span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">			System.out.println(a / b);</span><br><span class="line">		}</span><br><span class="line">		<span class="comment">//**********************编译时异常*************************</span></span><br><span class="line">		</span><br><span class="line">		<span class="meta">@Test</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test7</span><span class="params">()</span> </span>{</span><br><span class="line">			<span class="keyword">try</span> {</span><br><span class="line">			File file = <span class="keyword">new</span> File(<span class="string">"hello.txt"</span>);</span><br><span class="line">			FileInputStream fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> data = fis.read();</span><br><span class="line">			<span class="keyword">while</span>(data != -<span class="number">1</span>) {</span><br><span class="line">				System.out.println((<span class="keyword">char</span>)data);</span><br><span class="line">				data = fis.read();</span><br><span class="line">			}</span><br><span class="line">			fis.close();</span><br><span class="line">			}<span class="keyword">catch</span>(FileNotFoundException e) {</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">				<span class="comment">//FileNotFoundException是IOE的子类，所以</span></span><br><span class="line">			}<span class="keyword">catch</span>(IOException e) {</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>两个抛出异常模型，：①try-catch-finally  ②throws</p>
+<p>接下来仔细介绍一下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *一、 异常的处理：抓抛模型</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 过程一：“抛”：程序在正常执行的过程中，一旦出现异常，</span></span><br><span class="line"><span class="comment"> * 			  就会再异常代码处生成一个对应异常的对象，并将此对象抛出</span></span><br><span class="line"><span class="comment"> * 			  一旦抛出对象以后，其后的代码就不再执行</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 过程二：“抓”：可以理解为异常的处理方式：①try-catch-finally  ②throws</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 二、try - catch - finally模型</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * try{</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 		//可能出现异常的代码</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 		}catch(异常类型1 变量名1){</span></span><br><span class="line"><span class="comment"> * 				//处理异常的方式1</span></span><br><span class="line"><span class="comment"> * 			}</span></span><br><span class="line"><span class="comment"> * 		catch(异常类型2 变量名2){</span></span><br><span class="line"><span class="comment"> * 				//处理异常的方式2</span></span><br><span class="line"><span class="comment"> * 			}</span></span><br><span class="line"><span class="comment"> * 		catch(异常类型3 变量名3){</span></span><br><span class="line"><span class="comment"> * 				//处理异常的方式3</span></span><br><span class="line"><span class="comment"> * 			}</span></span><br><span class="line"><span class="comment"> * 		catch(异常类型4 变量名4){</span></span><br><span class="line"><span class="comment"> * 				//处理异常的方式4</span></span><br><span class="line"><span class="comment"> * 			}</span></span><br><span class="line"><span class="comment"> * 		...</span></span><br><span class="line"><span class="comment"> * finally{</span></span><br><span class="line"><span class="comment"> * 		//一定会执行的代码</span></span><br><span class="line"><span class="comment"> * }</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 说明</span></span><br><span class="line"><span class="comment"> * 1. finally是可选的（不一定要写）</span></span><br><span class="line"><span class="comment"> * 2. 使用try将可能出现异常的代码包装起来，在执行过程中，一旦出现异常，</span></span><br><span class="line"><span class="comment"> * 	  就会生成一个对应异常类的对象，根据此对象的类型，去catch中进行匹配</span></span><br><span class="line"><span class="comment"> * 3. 一旦try中的异常对象匹配到某一个catch时，就进入catch中进行异常的处理，处理完成后，</span></span><br><span class="line"><span class="comment"> * 	  就跳出当前的try - catch结构（在没有写finally的情况下），继续执行其后的代码</span></span><br><span class="line"><span class="comment"> * 4. catch中的异常类型如果没有父子关系，则谁声明在上，在下，无所谓</span></span><br><span class="line"><span class="comment"> * 	  如果满足子父类关系，则要求子类一定声明在父类的上面，否则一定报错</span></span><br><span class="line"><span class="comment"> * 5. 常用的异常对象处理方法：</span></span><br><span class="line"><span class="comment"> *  ①String getMessage();需要Sysou输出   </span></span><br><span class="line"><span class="comment"> *  ②printStackTrance();不需要Sysou输出，直接调用</span></span><br><span class="line"><span class="comment"> * 6. 在try结构中声明的变量，出了try结构，就不能再被调用</span></span><br><span class="line"><span class="comment"> * 		如果在外面想继续用，就声明在外面并赋值，避免报错。</span></span><br><span class="line"><span class="comment"> * 7. try - catch - finally结构，可以嵌套</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 体会： 使用try - catch - finally处理编译时异常，程序在编译时不再报错，但是运行时仍有可能报错</span></span><br><span class="line"><span class="comment"> * 	    相当于我们使用try - catch - finally将一个编译时可能出现的异常，延迟到运行时出现</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionTest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>{</span><br><span class="line">		</span><br><span class="line">		String str = <span class="string">"ab123"</span>;</span><br><span class="line">		<span class="keyword">try</span> {</span><br><span class="line">			</span><br><span class="line">		<span class="keyword">int</span> num = Integer.parseInt(str);</span><br><span class="line">		System.out.println(<span class="string">"hello!---1"</span>);</span><br><span class="line">		</span><br><span class="line">		}<span class="keyword">catch</span> (NumberFormatException e) {</span><br><span class="line">			<span class="comment">//String getMessage();</span></span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">			System.out.println(<span class="string">"出现数值转换异常！"</span>);</span><br><span class="line">			<span class="comment">//printStackTrance();</span></span><br><span class="line">			</span><br><span class="line">		}</span><br><span class="line">		System.out.println(<span class="string">"hello!---2"</span>);</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在try-catch-finally结构中，finally似乎是可有可无（因为可以不写），但是其实因为finally有一个“绝对会执行”的属性，所以有一些特殊的使用方法：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> jinzhen.study.java;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * try - catch - finally中finally的使用</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 1. finally是可选的</span></span><br><span class="line"><span class="comment"> * 2. finally中声明的是一定会被执行的代码，即使catch中又出现了异常，</span></span><br><span class="line"><span class="comment"> * 	  或者try和catch中有return语句，也不会影响</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 3. 像数据库连接，输入输出流、网络编程中的Socket等资源JVM是不能回收的，</span></span><br><span class="line"><span class="comment"> * 	  我们需要手动的进行资源的释放，此时的资源释放，就需要声明在finally中</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinallyTest</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="comment">//try - catch - finally结构，可以嵌套</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">teat2</span><span class="params">()</span> </span>{</span><br><span class="line">		FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> {</span><br><span class="line">			File file = <span class="keyword">new</span> File(<span class="string">"hello.txt"</span>);</span><br><span class="line">			fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> data = fis.read();</span><br><span class="line">			<span class="keyword">while</span>(data != -<span class="number">1</span>) {</span><br><span class="line">				System.out.println((<span class="keyword">char</span>)data);</span><br><span class="line">				data = fis.read();</span><br><span class="line">			}</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		} <span class="keyword">catch</span> (FileNotFoundException e) {</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		} <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		}<span class="keyword">finally</span> {</span><br><span class="line">			<span class="keyword">try</span> {</span><br><span class="line">				<span class="comment">//为了避免空指针异常，加个if</span></span><br><span class="line">				<span class="keyword">if</span>(fis != <span class="keyword">null</span>) </span><br><span class="line">				fis.close();</span><br><span class="line">			} <span class="keyword">catch</span> (IOException e) {				</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">		</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> num = method();</span><br><span class="line">		System.out.println(num);</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">try</span> {</span><br><span class="line">		<span class="keyword">int</span> arr[] = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">10</span>];</span><br><span class="line">		System.out.println(arr[<span class="number">10</span>]);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		}<span class="keyword">catch</span> (ArrayIndexOutOfBoundsException e ) {</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">		}<span class="keyword">finally</span> {</span><br><span class="line">			System.out.println(<span class="string">"我一定会被执行!"</span>);</span><br><span class="line">			</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">try</span> {</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">		System.out.println(a / b);</span><br><span class="line">		}<span class="keyword">catch</span>(ArithmeticException e) {</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		}<span class="keyword">catch</span>(Exception e) {</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		}<span class="keyword">finally</span> {</span><br><span class="line">			System.out.println(<span class="string">"???"</span>);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>今天的学习就到这里……其实还有一个throws，但是这一篇拖得太久了，一定要先发一下了😫</p>
+
+    </div>
+
+    
+    
+    
+      
+
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/abstract%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag"># abstract关键字</a>
+              <a href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag"># 接口</a>
+              <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag"># 内部类</a>
+              <a href="/tags/Exception/" rel="tag"># Exception</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/28/20210828/" rel="prev" title="static关键字-单例设计模式-final关键字的学习">
+                  <i class="fa fa-chevron-left"></i> static关键字-单例设计模式-final关键字的学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">臻臻</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">74k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:07</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+
+
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item" onclick="back2bottom()">
+      <i class='fa fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item" onclick="back2top()">
+      <i class='fa fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.8' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
